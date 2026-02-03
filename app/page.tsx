@@ -3,7 +3,7 @@ import profilePic from "../public/ben4.png";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center ">
+    <div className="flex flex-col items-center bg-slate-100">
       <div className="py-30 flex space-x-30 ">
         <h1 className="pt-35 text-2xl">
           Hi! I am <br />
