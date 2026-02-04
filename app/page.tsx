@@ -53,7 +53,7 @@ export default function Home() {
               {/* Social Icons */}
               <div className="flex gap-3">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/bennyshark"
                   className="p-3 rounded-full border-2 border-slate-200 hover:border-orange-300 hover:bg-orange-50 transition-all group"
                   aria-label="GitHub"
                   target="_blank"
@@ -62,7 +62,7 @@ export default function Home() {
                   <Github className="size-5 text-slate-700 group-hover:text-orange-600 transition-colors" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://linkedin.com/in/benedict-gutierrez-15917b333"
                   className="p-3 rounded-full border-2 border-slate-200 hover:border-orange-300 hover:bg-orange-50 transition-all group"
                   aria-label="LinkedIn"
                   target="_blank"
@@ -71,7 +71,7 @@ export default function Home() {
                   <Linkedin className="size-5 text-slate-700 group-hover:text-orange-600 transition-colors" />
                 </a>
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:benedictgutierrezcs25@gmail.com"
                   className="p-3 rounded-full border-2 border-slate-200 hover:border-orange-300 hover:bg-orange-50 transition-all group"
                   aria-label="Email"
                 >
