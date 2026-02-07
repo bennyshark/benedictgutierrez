@@ -2,7 +2,15 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Play, X, ExternalLink, Info, Globe } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  X,
+  ExternalLink,
+  Info,
+  Globe,
+} from "lucide-react";
 
 // Tech Badge Component - Modern Design
 function TechBadge({ children }: { children: React.ReactNode }) {
@@ -83,6 +91,7 @@ function WebMediaCarousel({ mediaItems }: { mediaItems: MediaItem[] }) {
                 src={currentMedia.src}
                 alt={`Screenshot ${currentIndex}`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                 className="object-contain"
               />
               {/* Overlay hint on hover */}
@@ -140,6 +149,7 @@ function WebMediaCarousel({ mediaItems }: { mediaItems: MediaItem[] }) {
                   src={item.src}
                   alt={`Thumbnail ${index + 1}`}
                   fill
+                  sizes="112px"
                   className="object-cover"
                 />
               )}
@@ -257,7 +267,7 @@ export default function WebProject({
         {/* Header Section */}
         <div className="mb-6">
           <h3 className="text-4xl font-bold text-slate-900 mb-6">{title}</h3>
-          
+
           {/* Site URL - Clean Link Style */}
           {siteUrl && (
             <div className="flex flex-col gap-2.5">
@@ -273,12 +283,14 @@ export default function WebProject({
                 </span>
                 <ExternalLink className="size-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
               </a>
-              
+
               {/* Access Note */}
               {accessNote && (
                 <div className="flex items-center gap-2 text-sm text-slate-600">
                   <Info className="size-4 flex-shrink-0 text-blue-600" />
-                  <span className="text-blue-700"><span className="font-semibold">Note:</span> {accessNote}</span>
+                  <span className="text-blue-700">
+                    <span className="font-semibold">Note:</span> {accessNote}
+                  </span>
                 </div>
               )}
             </div>
@@ -294,9 +306,7 @@ export default function WebProject({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Description */}
           <div>
-            <h4 className="text-2xl font-bold text-slate-900 mb-4">
-              About
-            </h4>
+            <h4 className="text-2xl font-bold text-slate-900 mb-4">About</h4>
             <p className="text-slate-600 leading-relaxed text-base">
               {description}
             </p>

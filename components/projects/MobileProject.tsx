@@ -84,6 +84,7 @@ function MediaCarousel({ mediaItems }: { mediaItems: MediaItem[] }) {
                 src={currentMedia.src}
                 alt={`Screenshot ${currentIndex}`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                 className="object-contain"
               />
               {/* Overlay hint on hover */}
@@ -141,6 +142,7 @@ function MediaCarousel({ mediaItems }: { mediaItems: MediaItem[] }) {
                   src={item.src}
                   alt={`Thumbnail ${index + 1}`}
                   fill
+                  sizes="112px"
                   className="object-cover"
                 />
               )}
@@ -220,6 +222,7 @@ function MediaCarousel({ mediaItems }: { mediaItems: MediaItem[] }) {
                 src={currentMedia.src}
                 alt={`Fullscreen ${currentIndex}`}
                 fill
+                sizes="100vw"
                 className="object-contain"
                 onClick={(e) => e.stopPropagation()}
               />

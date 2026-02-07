@@ -2,15 +2,9 @@
 
 import Image from "next/image";
 import profilePic from "../public/ben4.png";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  ArrowDown,
-} from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
 import WebProject from "@/components/projects/WebProject";
 import MobileProject from "@/components/projects/MobileProject";
-
 
 export default function Home() {
   const scrollToProjects = () => {
@@ -42,11 +36,18 @@ export default function Home() {
     "Pytorch",
   ];
 
-  // Example Web Project data - replace with your actual project
   const webProjectMedia = [
-    { type: "image" as const, src: "/web-screenshot1.jpg" },
-    { type: "image" as const, src: "/web-screenshot2.jpg" },
-    { type: "video" as const, src: "/web-demo.mp4" },
+    { type: "video" as const, src: "/braveboard-demo.mov" },
+    { type: "image" as const, src: "/brave.png" },
+    { type: "image" as const, src: "/brave1.png" },
+    { type: "image" as const, src: "/brave2.png" },
+    { type: "image" as const, src: "/brave3.png" },
+    { type: "image" as const, src: "/brave4.png" },
+    { type: "image" as const, src: "/brave5.png" },
+    { type: "image" as const, src: "/brave6.png" },
+    { type: "image" as const, src: "/brave7.png" },
+    { type: "image" as const, src: "/brave8.png" },
+    { type: "image" as const, src: "/brave9.png" },
   ];
 
   const webProjectTechStack = [
@@ -128,13 +129,13 @@ export default function Home() {
           </div>
 
           {/* Profile Image */}
-          <div className="relative">
+          <div className="relative w-[400px] h-[400px]">
             <Image
               src={profilePic}
               alt="Benedict Gutierrez"
-              width={400}
-              height={400}
-              className="rounded-full bg-slate-300"
+              fill
+              sizes="400px"
+              className="rounded-full bg-slate-300 object-cover"
               priority
             />
           </div>
