@@ -8,7 +8,9 @@ import {
   Mail,
   ArrowDown,
 } from "lucide-react";
+import WebProject from "@/components/projects/WebProject";
 import MobileProject from "@/components/projects/MobileProject";
+
 
 export default function Home() {
   const scrollToProjects = () => {
@@ -38,6 +40,21 @@ export default function Home() {
     "Flutter_vision",
     "Python",
     "Pytorch",
+  ];
+
+  // Example Web Project data - replace with your actual project
+  const webProjectMedia = [
+    { type: "image" as const, src: "/web-screenshot1.jpg" },
+    { type: "image" as const, src: "/web-screenshot2.jpg" },
+    { type: "video" as const, src: "/web-demo.mp4" },
+  ];
+
+  const webProjectTechStack = [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Node.js",
   ];
 
   return (
@@ -137,6 +154,21 @@ export default function Home() {
             description="A live leaf classifier mobile app dedicated to FAITH Colleges, Marian Orchard and Batangas Lake Lands. Derived from Snapfolia https://snapfolia.vercel.app, Snapfolia Go is a mobile app that provides real-time results simply by scanning a leaf with the device's camera. The app aims to offer a better user experience, delivering live results and object tracking."
             techStack={snapfoliaTechStack}
             mediaItems={snapfoliaMedia}
+          />
+
+          {/* Divider */}
+          <div className="my-20 flex items-center justify-center">
+            <div className="w-full max-w-md h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+          </div>
+
+          {/* BraveBoard Web Project */}
+          <WebProject
+            title="BraveBoard"
+            description="braveboard description"
+            techStack={webProjectTechStack}
+            mediaItems={webProjectMedia}
+            siteUrl="https://braveboard.vercel.app"
+            accessNote="Only FirstAsia accounts will be able to sign in."
           />
         </div>
       </section>
