@@ -1,144 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import profilePic from "../public/ben4.png";
 import {
   Github,
   Linkedin,
   Mail,
   ArrowDown,
-  ChevronLeft,
-  ChevronRight,
-  Play,
 } from "lucide-react";
-
-// Tech Badge Component
-function TechBadge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="px-4 py-2 bg-orange-50 text-orange-700 rounded-full text-m font-medium border border-orange-200">
-      {children}
-    </span>
-  );
-}
-
-// Media Carousel Component
-function MediaCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Placeholder media items - replace with actual paths
-  const mediaItems = [
-    { type: "video", src: "/snapfolia-go.mp4" },
-    { type: "image", src: "/snap1.jpg" },
-    { type: "image", src: "/snap2.jpg" },
-    { type: "image", src: "/snap3.jpg" },
-    { type: "image", src: "/snap4.jpg" },
-    { type: "image", src: "/snap5.jpg" },
-    { type: "image", src: "/snap7.jpg" },
-    { type: "image", src: "/snap8.jpg" },
-    { type: "image", src: "/snap6.jpg" },
-  ];
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % mediaItems.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex(
-      (prev) => (prev - 1 + mediaItems.length) % mediaItems.length
-    );
-  };
-
-  const currentMedia = mediaItems[currentIndex];
-
-  return (
-    <div className="relative">
-      {/* Main Display */}
-      <div className="relative bg-slate-900 rounded-2xl overflow-hidden shadow-2xl aspect-[9/16] max-w-sm mx-auto">
-        {currentMedia.type === "video" ? (
-          <video
-            key={currentIndex}
-            src={currentMedia.src}
-            controls
-            autoPlay // Add autoplay
-            muted // Required for autoplay to work in browsers
-            loop // Optional: loop the video
-            className="w-full h-full object-contain bg-black"
-            poster="/projects/snapfolia-thumbnail.png"
-            playsInline
-            preload="metadata"
-          >
-            Your browser does not support the video tag.
-          </video>
-        ) : (
-          <Image
-            src={currentMedia.src}
-            alt={`Snapfolia Go screenshot ${currentIndex}`}
-            fill
-            className="object-contain" // Also change this from object-cover to object-contain
-          />
-        )}
-
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-all backdrop-blur-sm"
-          aria-label="Previous"
-        >
-          <ChevronLeft className="size-6" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-all backdrop-blur-sm"
-          aria-label="Next"
-        >
-          <ChevronRight className="size-6" />
-        </button>
-
-        {/* Media Type Indicator */}
-        {currentMedia.type === "video" && (
-          <div className="absolute top-4 left-4 px-3 py-1 bg-orange-600 text-white text-xs font-semibold rounded-full flex items-center gap-1">
-            <Play className="size-3" />
-            VIDEO
-          </div>
-        )}
-      </div>
-
-      {/* Thumbnail Navigation */}
-      <div className="flex gap-2 mt-4 overflow-x-auto pb-2">
-        {mediaItems.map((item, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`flex-shrink-0 relative w-16 h-24 rounded-lg overflow-hidden border-2 transition-all ${
-              currentIndex === index
-                ? "border-orange-600 scale-105"
-                : "border-slate-200 hover:border-orange-300 opacity-60 hover:opacity-100"
-            }`}
-          >
-            {item.type === "video" ? (
-              <div className="w-full h-full bg-slate-800 flex items-center justify-center">
-                <Play className="size-6 text-white" />
-              </div>
-            ) : (
-              <Image
-                src={item.src}
-                alt={`Thumbnail ${index + 1}`}
-                fill
-                className="object-cover"
-              />
-            )}
-          </button>
-        ))}
-      </div>
-
-      {/* Counter */}
-      <p className="text-center text-sm text-slate-500 mt-2">
-        {currentIndex + 1} / {mediaItems.length}
-      </p>
-    </div>
-  );
-}
+import MobileProject from "@/components/projects/MobileProject";
 
 export default function Home() {
   const scrollToProjects = () => {
@@ -146,6 +16,29 @@ export default function Home() {
       behavior: "smooth",
     });
   };
+
+  // Snapfolia Go project data
+  const snapfoliaMedia = [
+    { type: "video" as const, src: "/snapfolia-go.mp4" },
+    { type: "image" as const, src: "/snap1.jpg" },
+    { type: "image" as const, src: "/snap2.jpg" },
+    { type: "image" as const, src: "/snap3.jpg" },
+    { type: "image" as const, src: "/snap4.jpg" },
+    { type: "image" as const, src: "/snap5.jpg" },
+    { type: "image" as const, src: "/snap7.jpg" },
+    { type: "image" as const, src: "/snap8.jpg" },
+    { type: "image" as const, src: "/snap6.jpg" },
+  ];
+
+  const snapfoliaTechStack = [
+    "Dart",
+    "Flutter",
+    "Yolov8",
+    "TensorFlow lite",
+    "Flutter_vision",
+    "Python",
+    "Pytorch",
+  ];
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gradient-to-br from-slate-50 via-white to-slate-50">
@@ -239,64 +132,12 @@ export default function Home() {
           </h2>
 
           {/* Snapfolia Go Project */}
-<div className="bg-gradient-to-br from-slate-50 to-white rounded-3xl shadow-xl overflow-hidden">
-  {/* Changed to a Grid that handles both columns and rows explicitly */}
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-6 p-8 lg:p-12">
-    
-    {/* --- ROW 1: HEADERS --- */}
-
-    {/* Top Left: Title */}
-    {/* lg:row-start-1 ensures it sits at the top on desktop */}
-    <div className="lg:col-start-1 lg:row-start-1">
-      <h3 className="text-4xl font-bold text-slate-900">
-        Snapfolia Go
-      </h3>
-    </div>
-
-    {/* Top Right: "About" Header */}
-   
-    <div className="lg:col-start-2 lg:row-start-1 flex items-end">
-
-      <h4 className="text-2xl font-semibold text-slate-900">
-        About
-      </h4>
-    </div>
-
-    {/* --- ROW 2: CONTENT --- */}
-
-    <div className="lg:col-start-1 lg:row-start-2">
-      <MediaCarousel />
-    </div>
-
-    <div className="lg:col-start-2 lg:row-start-2 flex flex-col gap-6">
-      <p className="text-slate-600 leading-relaxed text-xl">
-        A live leaf classifier mobile app dedicated to FAITH
-        Colleges, Marian Orchard and Batangas Lake Lands. Derived
-        from Snapfolia https://snapfolia.vercel.app, Snapfolia Go is
-        a mobile app that provides real-time results simply by
-        scanning a leaf with the device’s camera. The app aims to
-        offer a better user experience, delivering live results and
-        object tracking.
-      </p>
-
-      <div>
-        <h4 className="text-2xl font-semibold text-slate-900 mb-3">
-          Tech Stack
-        </h4>
-        <div className="flex flex-wrap gap-2">
-          <TechBadge>Dart</TechBadge>
-          <TechBadge>Flutter</TechBadge>
-          <TechBadge>Yolov8</TechBadge>
-          <TechBadge>TensorFlow lite</TechBadge>
-          <TechBadge>Flutter_vision</TechBadge>
-          <TechBadge>Python</TechBadge>
-          <TechBadge>Pytorch</TechBadge>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
+          <MobileProject
+            title="Snapfolia Go"
+            description="A live leaf classifier mobile app dedicated to FAITH Colleges, Marian Orchard and Batangas Lake Lands. Derived from Snapfolia https://snapfolia.vercel.app, Snapfolia Go is a mobile app that provides real-time results simply by scanning a leaf with the device's camera. The app aims to offer a better user experience, delivering live results and object tracking."
+            techStack={snapfoliaTechStack}
+            mediaItems={snapfoliaMedia}
+          />
         </div>
       </section>
     </div>
